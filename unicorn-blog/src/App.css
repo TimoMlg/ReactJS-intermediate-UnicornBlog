@@ -28,6 +28,39 @@
   color: #61dafb;
 }
 
+li {
+  list-style-type: none;
+}
+
+h1 {
+  margin-top: 3%;
+  text-align: center;
+}
+
+li img {
+  width: 300px;
+  border-radius: 50px;
+  padding: 3%;
+}
+
+.gallery-photos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 3%;
+
+}
+
+.articles-section{
+  padding: 15px;
+}
+.articles-section li {
+  background-color: #e7e7e7;
+  border-radius: 25px;
+  padding: 15px;
+  margin: 15px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

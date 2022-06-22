@@ -1,51 +1,56 @@
 import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Navigation, Footer, Home, Signup, SomeOtherPage } from "./Components";
+import { Navigation, Footer, Home, Upload, Gallery } from "./Components";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.states = {
+    this.state = {
+      error: null,
       isLoaded: false,
-      items: []
+      posts: [],
+      photos: [],
+      postId: ''
     };
   }
 
   componentDidMount() {
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    Promise.all([
+      fetch('https://jsonplaceholder.typicode.com/posts'),
+      fetch('https://jsonplaceholder.typicode.com/albums/1/photos')])
+      .then(([res1, res2]) => Promise.all([ res1.json(), res2.json()]))
       .then(
-        (response) => response.json().then((json => console.log(json))).then((response) => {
+        ([result1, result2]) => {
           this.setState({
             isLoaded: true,
-            items: response
+            posts: result1,
+            photos: result2
           });
         },
-        // Remarque : il est important de traiter les erreurs ici
-        // au lieu d'utiliser un bloc catch(), pour ne pas passer à la trappe
-        // des exceptions provenant de réels bugs du composant.
         (error) => {
           this.setState({
             isLoaded: true,
             error
           });
         }
-      ))
-  }
+        )
+    }
 
   render() {
-    const { error, isLoaded, items } = this.states;
+    const { error, isLoaded } = this.state;
     if (error) {
       return <div>Erreur : {error.message}</div>;
-    
+    } else if (!isLoaded) {
+      return <div>chargement...</div>
     } else {
       return (
         <Router>
           <Navigation />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/sign-up" element={<Signup items={this.states.items} />} />
-            <Route path="/some-other-page" element={<SomeOtherPage />} />
+            <Route path="/upload" element={<Upload posts={this.state.posts} />} />
+            <Route path="/gallery" element={<Gallery photos={this.state.photos} />} />
           </Routes>
           <Footer />
         </Router>
@@ -53,5 +58,4 @@ class App extends React.Component {
     }
   }
 }
-
 export default App;
