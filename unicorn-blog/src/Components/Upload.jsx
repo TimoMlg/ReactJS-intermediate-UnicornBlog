@@ -1,20 +1,31 @@
 import React from "react";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 
 const Upload = (props) => {
   return (
-    <div className="Signup-main-content">
-    <h1>Articles</h1>
-      <ul className='articles-section'>
-        {props.posts.slice(0,3).map((post) => 
-          <li key={post.id}>
-            <h4>{post.title}</h4>
-            <p>{post.body}</p>
-            <Button variant="outlined">View More</Button>
-          </li>
-        )}
-      </ul>
-    </div>
+    <form className="form-section">
+    <div className="title-div">
+      <h3>Title</h3>
+      <input
+        value={props.title}
+        onChange={props.handleTitle}
+        type="text"
+        name="title"
+      />
+      </div>
+        <div className="body-div">
+        <h3>Content</h3>
+        <input
+          value={props.body}
+          onChange={props.handleBody}
+          type="textarea"
+          name="body"
+          className="textArea" />
+        </div>
+        <Button onClick={props.handleNewPost} variant="contained">
+        Post
+      </Button>
+    </form>
   );
 };
 
