@@ -1,6 +1,5 @@
 {
   "name": "unicorn-blog",
-  "homepage": "https://timomlg.github.io/ReactJS-intermediate-UnicornBlog/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

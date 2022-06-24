@@ -2,6 +2,7 @@ import React from 'react';
 
 const Gallery = (props) => {
     return (
+        //Affichage de la gallerie photos récupérée grace au props.photos
         <div className="Signup-main-content">
             <h1>Gallery</h1>
             <ul className='gallery-photos'>

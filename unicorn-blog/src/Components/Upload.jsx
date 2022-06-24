@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@mui/material/Button";
 
 const Upload = (props) => {
-
+    //Component d'affichage du formulaire de la page upload
     return (
       <form className="form-section">
       <div className="title-div">

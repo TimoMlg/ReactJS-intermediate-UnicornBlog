@@ -2,6 +2,8 @@ import React from "react";
 import Button from "@mui/material/Button";
 
 const Home = (props) => {
+  //Component d'affichage de la page d'accueil avec la liste des posts
+  //Gestion du bon affichage avec le flag isClicked
   if (!props.isClicked) {
     return (
       <div className="Signup-main-content">
@@ -38,6 +40,7 @@ const Home = (props) => {
         </ul>
       </div>
     );
+    //Affichage du detail du post si le bouton viewMore a été clické
   } else {
     const filteredItems = props.posts.filter(
       (post) => post.id === props.postId

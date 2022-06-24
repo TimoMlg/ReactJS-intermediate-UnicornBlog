@@ -4,6 +4,7 @@ import logo from "../logo/unicorn-logo.png"
 
 function Navigation() {
   return (
+    //Component de navigation du site
     <div className="navigation">
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <div className="container">
