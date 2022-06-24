@@ -24,6 +24,10 @@
   color: white;
 }
 
+.navbar-brand .logo{
+  width: 60px;
+}
+
 .App-link {
   color: #61dafb;
 }

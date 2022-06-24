@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useNavigate} from "react-router-dom";
 import { Navigation, Footer, Home, Upload, Gallery } from "./Components";
 
 class App extends React.Component {
@@ -83,6 +83,7 @@ class App extends React.Component {
       posts: [obj, ...this.state.posts],
       isPosted: true
     });
+
   };
 
   render() {
@@ -119,6 +120,7 @@ class App extends React.Component {
                   handleTitle={this.handleTitle}
                   body={this.state.body}
                   title={this.state.title}
+                  isPosted={this.state.isPosted}
                 />
               }
             />
@@ -130,6 +132,8 @@ class App extends React.Component {
           <Footer />
         </Router>
       );
+    } if (this.state.isPosted) {
+
     }
   }
 }
